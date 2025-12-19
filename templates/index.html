@@ -1,0 +1,103 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ML Models</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body { background: #f7f9fc; font-family: 'Segoe UI', system-ui, sans-serif; }
+    h1 {
+      text-align: center; font-size: 2.6em; margin: 30px 0 10px; color: #222;
+      letter-spacing: 0.5px;
+    }
+    .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+    .grid {
+      display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 18px; padding: 0 24px; max-width: 1000px; margin: 0 auto 40px;
+    }
+    .card {
+      background: #fff; border-radius: 14px; padding: 20px; text-decoration: none; color: #222;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 14px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.12); }
+    .icon {
+      font-size: 1.4em; width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; color: #fff;
+    }
+    .title { font-weight: 700; margin: 0; }
+    .desc { margin: 4px 0 0; color: #666; font-size: .95em; }
+    /* theme accents */
+    .t-linear .icon { background: #2e7d32; }
+    .t-logistic .icon { background: #1e88e5; }
+    .t-decision .icon { background: #fb8c00; }
+    .t-svm .icon { background: #8e24aa; }
+    .t-knn .icon { background: #00897b; }
+    .t-kmeans .icon { background: #6d4c41; }
+    .t-random .icon { background: #d81b60; }
+    /* last item centered on bottom row if needed */
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <h1>ML MODEL</h1>
+  <p class="subtitle">Choose an algorithm to explore predictions</p>
+
+  <div class="grid">
+    <a href="/linear" class="card t-linear">
+      <div class="icon">🏠</div>
+      <div>
+        <p class="title">Linear regression</p>
+        <p class="desc">House price prediction</p>
+      </div>
+    </a>
+
+    <a href="/logistic" class="card t-logistic">
+      <div class="icon">❤️</div>
+      <div>
+        <p class="title">Logistic regression</p>
+        <p class="desc">10-year CHD risk</p>
+      </div>
+    </a>
+
+    <a href="/decision" class="card t-decision">
+      <div class="icon">🪙</div>
+      <div>
+        <p class="title">Decision tree regressor</p>
+        <p class="desc">Gold closing rate</p>
+      </div>
+    </a>
+
+    <a href="/svm" class="card t-svm">
+      <div class="icon">🧬</div>
+      <div>
+        <p class="title">Support vector machine</p>
+        <p class="desc">Breast cancer classification</p>
+      </div>
+    </a>
+
+    <a href="/knn" class="card t-knn">
+      <div class="icon">🍷</div>
+      <div>
+        <p class="title">K nearest neighbours</p>
+        <p class="desc">Wine quality</p>
+      </div>
+    </a>
+
+    <a href="/kmeans" class="card t-kmeans">
+      <div class="icon">🐾</div>
+      <div>
+        <p class="title">K means clustering</p>
+        <p class="desc">Animal classification</p>
+      </div>
+    </a>
+
+    <a href="/random" class="card t-random">
+      <div class="icon">⚖️</div>
+      <div>
+        <p class="title">Random forest</p>
+        <p class="desc">BMI prediction</p>
+      </div>
+    </a>
+  </div>
+</body>
+</html>

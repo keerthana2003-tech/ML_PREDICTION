@@ -1,0 +1,95 @@
+<!-- templates/decision.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gold Closing Rate Prediction</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    dy {
+      background: linear-gradient(to right, #f5f4e8, #ddf780);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    h2 {
+      color: #bda331;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    label {
+      font-weight: 600;
+      margin-top: 15px;
+      display: block;
+      color: #e9ff25;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s;
+    }
+    input:focus {
+      border-color: #cefd4d;
+      outline: none;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background: #b1fc03;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #cef812;
+    }
+    .result {
+      margin-top: 30px;
+      background: #f1f8e9;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 1.2em;
+      color: #b4f10d;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body class="page">
+  <div class="page-header">
+    <span class="page-icon">🪙</span>
+    <h2>Gold closing rate prediction</h2>
+    <p class="page-desc">Predict close from daily OHLC inputs</p>
+  </div>
+
+  <form class="card" action="/predict/decision" method="post">
+    <label>Opening price</label>
+    <input type="number" name="open_price" placeholder="e.g. 58000" required>
+
+    <label>High price</label>
+    <input type="number" name="high_price" placeholder="e.g. 58500" required>
+
+    <label>Low price</label>
+    <input type="number" name="low_price" placeholder="e.g. 57500" required>
+
+    <button type="submit" class="btn">💰 Predict closing rate</button>
+  </form>
+
+  {% if result %}<div class="result">{{ result }}</div>{% endif %}
+</body>
+</html>

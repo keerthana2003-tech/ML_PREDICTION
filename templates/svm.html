@@ -1,0 +1,101 @@
+<!-- templates/svm.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Breast Cancer Classification</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    dy {
+      background: linear-gradient(to right, #f5e8f2, #e6c8d2);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    h2 {
+      color: #b1076a;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    label {
+      font-weight: 600;
+      margin-top: 15px;
+      display: block;
+      color: #da3bc4;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s;
+    }
+    input:focus {
+      border-color: #cc1285;
+      outline: none;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background: #e44dc3;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #f043bc;
+    }
+    .result {
+      margin-top: 30px;
+      background: #f8e9f6;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 1.2em;
+      color: #630e66;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body class="page">
+  <div class="page-header">
+    <span class="page-icon">🧬</span>
+    <h2>Breast cancer classification</h2>
+    <p class="page-desc">Classify tumor type from mean features</p>
+  </div>
+
+  <form class="card" action="/predict/svm" method="post">
+    <label>Radius mean</label>
+    <input type="number" name="radius_mean" placeholder="e.g. 14.5" step="0.01" required>
+
+    <label>Texture mean</label>
+    <input type="number" name="texture_mean" placeholder="e.g. 18.2" step="0.01" required>
+
+    <label>Perimeter mean</label>
+    <input type="number" name="perimeter_mean" placeholder="e.g. 90.1" step="0.01" required>
+
+    <label>Area mean</label>
+    <input type="number" name="area_mean" placeholder="e.g. 600" step="0.01" required>
+
+    <label>Smoothness mean</label>
+    <input type="number" name="smoothness_mean" placeholder="e.g. 0.10" step="0.001" required>
+
+    <button type="submit" class="btn">🧬 Predict tumor type</button>
+  </form>
+
+  {% if result %}<div class="result">{{ result }}</div>{% endif %}
+</body>
+</html>

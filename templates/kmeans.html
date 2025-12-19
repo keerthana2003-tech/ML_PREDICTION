@@ -1,0 +1,102 @@
+<!-- templates/kmeans.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animal Classification</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    dy {
+      background: linear-gradient(to right, #ece8f5, #c8d0e6);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    h2 {
+      color: #1364c2;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    label {
+      font-weight: 600;
+      margin-top: 15px;
+      display: block;
+      color: #167ec4;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s;
+    }
+    input:focus {
+      border-color: #2a8bcc;
+      outline: none;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background: #2f8fac;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #2679c7;
+    }
+    .result {
+      margin-top: 30px;
+      background: #f1f8e9;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 1.2em;
+      color: #28aec0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body class="page">
+  <div class="page-header">
+    <span class="page-icon">🐾</span>
+    <h2>Animal classification</h2>
+    <p class="page-desc">Cluster species by binary traits</p>
+  </div>
+
+  <form class="card" action="/predict/kmeans" method="post">
+    <label>Hair</label><input type="number" name="hair" placeholder="0 or 1" required>
+    <label>Feathers</label><input type="number" name="feathers" placeholder="0 or 1" required>
+    <label>Eggs</label><input type="number" name="eggs" placeholder="0 or 1" required>
+    <label>Milk</label><input type="number" name="milk" placeholder="0 or 1" required>
+    <label>Airborne</label><input type="number" name="airborne" placeholder="0 or 1" required>
+    <label>Aquatic</label><input type="number" name="aquatic" placeholder="0 or 1" required>
+    <label>Predator</label><input type="number" name="predator" placeholder="0 or 1" required>
+    <label>Toothed</label><input type="number" name="toothed" placeholder="0 or 1" required>
+    <label>Backbone</label><input type="number" name="backbone" placeholder="0 or 1" required>
+    <label>Breathes</label><input type="number" name="breathes" placeholder="0 or 1" required>
+    <label>Venomous</label><input type="number" name="venomous" placeholder="0 or 1" required>
+    <label>Fins</label><input type="number" name="fins" placeholder="0 or 1" required>
+    <label>Legs</label><input type="number" name="legs" placeholder="e.g. 4" required>
+    <label>Tail</label><input type="number" name="tail" placeholder="0 or 1" required>
+    <label>Domestic</label><input type="number" name="domestic" placeholder="0 or 1" required>
+
+    <button type="submit" class="btn">🐾 Classify animal</button>
+  </form>
+
+  {% if result %}<div class="result">{{ result }}</div>{% endif %}
+</body>
+</html>
